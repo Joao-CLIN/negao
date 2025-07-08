@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Vitor Guidoti - Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma:wght@400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --branco-principal: #ffffff;
+            --preto-principal: #000000;
+            --neon-principal: #ffe700;
+            --neon-hover: #ffed33;
+            --background: #1a1b17;
+            --background-secondary: #2b2c28;
+            --background-card: #3a3b37;
+            --texto-secundario: #b8b9b5;
+            --fonte-principal: 'Michroma', sans-serif;
+            --fonte-secundaria: 'Inter', sans-serif;
+            --sombra-neon: 0 0 20px rgba(255, 231, 0, 0.3);
+            --sombra-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --gradiente-principal: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--gradiente-principal);
+            color: var(--branco-principal);
+            font-family: var(--fonte-secundaria);
+            font-weight: 400;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px var(--neon-principal), 0 0 20px var(--neon-principal);
+            }
+            50% {
+                text-shadow: 0 0 20px var(--neon-principal), 0 0 30px var(--neon-principal), 0 0 40px var(--neon-principal);
+            }
+        }
+
+        /* Seção Principal */
+        .principal {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 2rem;
+            background: var(--gradiente-principal);
+        }
+
+        .principal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 231, 0, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container_titulo {
+            color: var(--neon-principal);
+            font-family: var(--fonte-principal);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out, glowPulse 2s ease-in-out infinite;
+            text-shadow: var(--sombra-neon);
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container_titulo:hover {
+            color: var(--neon-hover);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .container_texto {
+            color: var(--texto-secundario);
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            text-align: center;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container_texto::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--neon-principal);
+            margin: 1rem auto;
+            border-radius: 2px;
+            box-shadow: var(--sombra-neon);
+        }
+
+        /* Seção Secundária */
+        .secundario {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: var(--gradiente-principal);
+            position: relative;
+        }
+
+        .container_sobre {
+            color: var(--neon-principal);
+            font-family: var(--fonte-principal);
+            font-size: clamp(2rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: var(--sombra-neon);
+            letter-spacing: 1px;
+        }
+
+        .container_lista {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .tech-card {
+            background: var(--background-card);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 231, 0, 0.1);
+            box-shadow: var(--sombra-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 231, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--sombra-neon);
+            border-color: var(--neon-principal);
+        }
+
+        .tech-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .tech-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .tech-name {
+            font-family: var(--fonte-principal);
+            font-size: 1rem;
+            color: var(--neon-principal);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-description {
+            font-size: 0.9rem;
+            color: var(--texto-secundario);
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container_lista {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tech-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .principal, .secundario {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Animação de entrada nas imagens */
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .tech-card {
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        .tech-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .tech-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .tech-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="principal">
+            <h1 class="container_titulo">João Vitor Guidoti</h1>
+            <p class="container_texto">Análise e Desenvolvimento de Sistemas</p>
+        </section>
+        
+        <section class="secundario">
+            <h2 class="container_sobre">Sobre Mim</h2>
+            <div class="container_lista">
+                <div class="tech-card">
+                    <img src=\img\css_logo.png alt="CSS Logo">
+                    <span class="tech-name">CSS3</span>
+                    <p class="tech-description">Estilização moderna e responsiva</p>
+                </div>
+                <div class="tech-card">
+                    <img src=\img\html_logo.png alt="HTML Logo">
+                    <span class="tech-name">HTML5</span>
+                    <p class="tech-description">Estrutura semântica e acessível</p>
+                </div>
+                <div class="tech-card">
+                    <img src=\img\php_logo.png alt="PHP Logo">
+                    <span class="tech-name">PHP</span>
+                    <p class="tech-description">Desenvolvimento back-end dinâmico</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
